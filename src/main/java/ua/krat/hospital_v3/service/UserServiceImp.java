@@ -7,9 +7,11 @@ import ua.krat.hospital_v3.model.Role;
 import ua.krat.hospital_v3.model.User;
 import ua.krat.hospital_v3.repository.RoleRepository;
 import ua.krat.hospital_v3.repository.UserRepository;
+import ua.krat.hospital_v3.repository.UserRepositoryCustom;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 
 @Service
@@ -23,6 +25,9 @@ public class UserServiceImp implements UserService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    UserRepositoryCustom userRepositoryCustom;
 
     @Override
     public void saveUser(User user) {
@@ -38,5 +43,15 @@ public class UserServiceImp implements UserService {
     public boolean inUserAlreadyPresent(User user) {
         return userRepository.existsByEmail(user.getEmail());
 
+    }
+
+    @Override
+    public List<User> findAllUsers() {
+        return userRepository.findAll();
+    }
+
+    @Override
+    public List<User> findAllPatients() {
+        return userRepositoryCustom.getAllPatients();
     }
 }

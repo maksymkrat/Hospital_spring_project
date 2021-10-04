@@ -1,13 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>admin page</title>
+    <title>admin-page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body>
+
+<body style="background-color:#ededed;">
+<div style="background-color:#337ab7;height:50px;">
+
+</div>
 hello admin
 <br>
 
+<hr>
+<div th:each="users : ${users}">
+    <!--/*@thymesVar id="getName" type="ua.krat.hospital_v3.model.User"*/-->
+    <a  th:text="${users.getName()}">users</a>
+</div>
 <hr>
 <br>
 <h2><a href="/logout">log out</a></h2>
